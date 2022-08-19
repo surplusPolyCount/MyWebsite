@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 const styles = makeStyles({
     navWrap:{
@@ -45,7 +46,7 @@ function NavBar(){
         </svg>
         </a>
 
-        <MenuRoundedIcon className={classes.iconAnchor} sx={{float: 'right', fontSize: 50, marginRight: 5}}/>
+        <MenuRoundedIcon className={classes.iconAnchor} style={{float: 'right', top:'-2vh', position: 'relative'}} sx={{ fontSize: 50, marginRight: 5}}/>
     </div> 
     );
 }

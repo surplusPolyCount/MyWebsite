@@ -7,19 +7,21 @@ import Typography from '@mui/material/Typography';
 import { palette } from '@mui/system';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
 
 //media
-import rmgif from './media/raymarcher.mp4'; 
-import running from './media/runninz.mp4';
-import headerBackgrnd from './media/d3backrender.png';
+import rmgif from '../media/raymarcher.mp4'; 
+import running from '../media/runninz.mp4';
+import headerBackgrnd from '../media/d3backrender.png';
 import BrushRoundedIcon from '@mui/icons-material/BrushRounded';
 import SportsEsportsRoundedIcon from '@mui/icons-material/SportsEsportsRounded';
 import MonitorRoundedIcon from '@mui/icons-material/MonitorRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 
 //components
-import NavBar from './components/NavBar'
-import ArtDisplay from './components/ArtDisplay'
+import NavBar from '../components/NavBar'
+import ArtDisplay from '../components/ArtDisplay'
 
 
 //GOOD EXAMPLE?
@@ -45,7 +47,7 @@ const theme = createTheme({
       'Roboto'
     ],
     body1:{
-      color:'#798992'
+      color:'#798992',
     },
     h3:{
       fontFamily:[
@@ -67,6 +69,7 @@ const theme = createTheme({
     h5:{
       fontWeight: 100, 
       lineHeight: '2rem',
+      fontSize: 45, 
     },
   },
 });
@@ -98,13 +101,16 @@ const styles = makeStyles({
     filter: "invert(57%) sepia(6%) saturate(821%) hue-rotate(157deg) brightness(91%) contrast(90%)"
   },
 
-  iconCode:{
-    width: "75%", 
-    transition: "filter 0.35s", 
-    "&:hover":{
-      filter: "invert(88%)"
-    }
+  SubjectLink:{
+    paddingTop: '15px', 
+    width: '175px', 
+    height: '175px', 
+    borderRadius: '300px', 
+    backgroundColor: '#212a2a',
+    transition: "background 0.35s", 
+    "&:hover":{ backgroundColor: '#FFB26F'}
   },
+
 
   link:{
     color: "", 
@@ -115,13 +121,12 @@ const styles = makeStyles({
 });
 // color pallete: 
 //https://coolors.co/161c1c-4c4652-798992-9fa8af-ffb26f
-function App() {
+function Home() {
   const classes = styles();
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-      <NavBar/> 
       <div className={classes.headerArt} style={{marginBottom: "-5%",}}>
         <img className={classes.headerPic} src={headerBackgrnd}/>
         <Typography variant="h3">Simon<br />Rosenthal</Typography>
@@ -139,78 +144,41 @@ function App() {
       <div className={classes.wrapper}>
       <Grid container spacing={2.0} sx={{width:"100%", margin:"auto"}}>
         <Grid item xs={3}>
-          <div style={{paddingTop: '15px', width: '175px', height: '175px', borderRadius: '300px', backgroundColor: '#212a2a'}}>
-            <a style={{color: '#798992', textDecoration: 'none'}} href={''}>
+          <div  className={classes.SubjectLink}>
+          <Link style={{color: "#798992", textDecoration: 'none'}} to="/Art">
               <BrushRoundedIcon sx={{fontSize: 100}}/>
               <h1 style={{position: 'relative', top: '-5vh'}}>Art</h1>
-            </a> 
-          </div>
+           </Link> 
+           </div>
         </Grid> 
 
         <Grid item xs={3}>
-        <div style={{paddingTop: '15px', width: '175px', height: '175px', borderRadius: '300px', backgroundColor: '#212a2a'}}>
+        <div className={classes.SubjectLink}>
+        <Link style={{color: "#798992", textDecoration: 'none'}} to="/Games">
             <SportsEsportsRoundedIcon sx={{fontSize: 100}}/>
             <h1 style={{position: 'relative', top: '-5vh'}}>Games</h1>
+          </Link> 
           </div>
         </Grid> 
 
         <Grid item xs={3}>
-        <div style={{paddingTop: '15px', width: '175px', height: '175px', borderRadius: '300px', backgroundColor: '#212a2a'}}>
+        <div  className={classes.SubjectLink}>
+        <Link style={{color: "#798992", textDecoration: 'none'}} to="/Code">
             <CodeRoundedIcon sx={{fontSize: 100}}/>
             <h1 style={{position: 'relative', top: '-5vh'}}>Code</h1>
+          </Link> 
           </div>
         </Grid> 
 
         <Grid item xs={3}>
-        <div style={{paddingTop: '15px', width: '175px', height: '175px', borderRadius: '300px', backgroundColor: '#212a2a'}}>
+        <div  className={classes.SubjectLink}>
+        <Link style={{color: "#798992", textDecoration: 'none'}} to="/Shaders">
             <MonitorRoundedIcon sx={{fontSize: 100}}/>
             <h1 style={{position: 'relative', top: '-5vh'}}>Shaders</h1>
+            </Link>
           </div>
         </Grid> 
       </Grid>
-      </div>  
-
-      <div className={classes.wrapper} style={{height: '80vh', width: '75vw', margin: '30vh auto'}}>
-        <Typography variant="h4">Art</Typography>
-        <ArtDisplay/> 
-       
-      </div>
-   
-
-      <div className={classes.wrapper}>
-      <Typography variant="h4">Languages</Typography>
-        <Grid container spacing={2.0} sx={{width:"100%", margin:"auto"}}>
-          <Grid  item xs={2}>
-            <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-plain.svg" />
-          </Grid>
-          <Grid  item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-plain.svg" />
-          </Grid>
-          <Grid  item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" />
-          </Grid>  
-          <Grid item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
-          </Grid> 
-          
-          <Grid item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />          </Grid>
-          <Grid item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
-          </Grid>
-          <Grid item xs={2}>
-          </Grid> 
-          <Grid item xs={2}>
-          </Grid> 
-          <Grid item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
-          </Grid>  
-          <Grid item xs={2}>
-          <img className={classes.iconCode} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-plain.svg" />
-          </Grid> 
-
-
-        </Grid>
       </div>  
       </ThemeProvider>
     </div>
@@ -218,4 +186,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

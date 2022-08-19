@@ -8,7 +8,7 @@ const styles = makeStyles({
         height: '100%',
         float: 'left', 
         margin: 'auto', 
-        width: '33%',
+        width: '33.33%',
     },
     ArtBoxHover:{
         height: '100%',
